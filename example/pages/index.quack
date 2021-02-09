@@ -1,0 +1,47 @@
+Page /
+  show header
+  show content
+    show card
+      show paragraph
+        text = course.description
+
+      # show can take the name of a template that is rendered with the given parameters
+      show "map.html"
+        holes = course.holes
+
+      show action
+        show button
+          action = /game/new
+          text = "Start Game"
+
+    show heading
+      text = "Best Speedruns"
+
+    show card
+      show quote
+        text =
+          Scores are calculated as number of seconds in speedrun + 20 seconds for each throw.
+
+      show table
+        headings = "Player" "Time" "Throws" "Score"
+
+        each course.scores as score
+          show row
+            show cell
+              text = score.player
+            show cell
+              text = score.time
+            show cell
+              text = score.throws
+            show cell
+              text = score.score
+            show cell
+              show icon
+                name = expand
+                action = /game/:score.game
+
+      show action
+        show link
+          action = /leaders
+          text = "More"
+

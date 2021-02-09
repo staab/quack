@@ -1,0 +1,16 @@
+# Variables use dynamic rather than lexical scope, which means
+# game, scores, and players are all in scope here. `data` decares
+# a variable, and `set` assigns to it the result of the child block.
+Action start_game
+  set game
+    create game
+      start = now
+
+  set scores
+    each players as player
+      # Create creates a model
+      create score
+        player = player
+        throws = 0
+
+  go_to /game/:game.id

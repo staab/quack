@@ -1,0 +1,24 @@
+# Each model can provide multiple aliases to handle inflection
+# ID and created are automatically included on all models
+
+Model course courses
+  title = text
+  description = text
+  subdomain = text
+
+Model hole holes
+  course = course
+  name = text
+  ord = integer
+  lat = number
+  lon = number
+
+Model game games
+  start = moment
+  end = moment
+
+Model score scores
+  game = text
+  player = text
+  throws = integer
+  score = integer

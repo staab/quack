@@ -1,0 +1,29 @@
+View course (subdomain)
+  # Retrieve the matching course. If this fails, the view throws a 404.
+  # Within the `one` block, a default could be provided.
+  data course
+    one course
+      where
+        subdomain = subdomain
+
+  data holes
+    all holes
+      where
+        course = course.id
+
+  data scores
+    all scores
+      limit = 10
+      where
+        course = course.id
+      sort
+        field = created
+        order = descending
+
+  # The following data is returned from the view. This could all be used directly
+  # within a component as well.
+  return
+    title = course.title
+    description = course.description
+    holes = holes
+    scores = scores

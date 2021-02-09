@@ -1,0 +1,6 @@
+Component header
+  show columns
+    show menu
+    show center
+      text = "Duthie Park"
+    show empty

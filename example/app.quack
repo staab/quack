@@ -1,0 +1,20 @@
+App
+  # Theme allows swapping out stock components
+  icon = "favicon.ico"
+  title = course.title
+  theme = "dark_mono"
+
+  # Within the app, course is a variable containing the return
+  # value of the "course" view with the app's subdomain as a parameter
+  # If the view throws a 404, by default we'd show a 404 page at the level
+  # the data is defined. The programmer can also define an error handler
+  # dispatching on error type that renders something different. Same goes for
+  # loading; a spinner by default, overridable. A model could be directly used
+  # here instead.
+  data course
+    view course
+      subdomain = app.subdomain
+
+  data players
+  data scores
+  data game

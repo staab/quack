@@ -1,0 +1,55 @@
+Page /game/new
+  # Forms try to be smart e.g., errors get cleared when inputs change
+  # Declaring a form puts the entire page into the form; if a form needs
+  # to encompass less, put it in a component
+  form
+    validate
+      check = all players have name
+      message = "Please enter names for all players"
+
+    action = start_game
+
+  show header
+  show content
+    show heading
+      # String concatenation is implied when there are multiple parts
+      text = "New Game - " (length course.holes) " holes"
+
+    show card
+      show paragraph
+        text = "Players"
+
+    each players as player
+      show row
+        show input
+          value = player.name
+
+        # When aliasing list items, collection-oriented functions infer
+        # the collection when omitted.
+        unless first? player
+          show link
+            action = remove player
+
+            show icon
+              name = "times"
+
+            show span
+              text = "Remove Player"
+
+      show link
+        action = append players {}
+
+        show icon
+          name = "plus"
+
+        show span
+          text = "Add Player"
+
+    show row
+      show error
+        text = form.error
+
+    show action
+      show button
+        action = form.submit
+        text = "Start Game"
